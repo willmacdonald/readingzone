@@ -134,7 +134,8 @@ jQuery(function () {
 									'UKK': '#02a3d1', // South West
 									'UKJ': '#ffad40', // South Eeast
 									'UKI': '#1f52a2', // London
-									'NIR': '#f2af56' // Northern Ireland
+									'NIR': '#f2af56', // Northern Ireland
+									'IE': '#2052a2' // Ireland
 								},
 								attribute: 'fill'
 							}]

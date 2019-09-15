@@ -485,7 +485,7 @@ figure a.video { position: relative; z-index: 2; }
 		.jvectormap-tip:before { content: "\e91b"; left: auto; right: 25px; width: auto; margin: -15px 0 0; font-size: 21px; line-height: 30px; }
 
 .uk-map { display: block; overflow: hidden; position: relative; height: 690px; margin: 44px 0 80px; text-align: center; }
-	.uk-map .inner { display: block; height: 880px; margin-top: -188px; }
+	.uk-map .inner { display: block; position: relative; left: 50px; height: 880px; margin-top: -188px; }
 	
 		
 /*! Lists --------- */
@@ -835,7 +835,7 @@ svg:not(:root) { overflow: hidden; }
 	.triple > *, .double.a > * { border-left-width: 25px; }
 	.triple .s35 .text-right { padding-right: 0; }
 .uk-map { height: 590px; margin-bottom: 40px; }
-	.uk-map .inner { height: 752px; margin-top: -161px; }	
+	.uk-map .inner { left: 40px; height: 752px; margin-top: -161px; }	
 }
 @media only screen and (max-width: 75em) { /* 1200 */
 #top, #content, #footer { width: 980px; } 
@@ -928,7 +928,7 @@ svg:not(:root) { overflow: hidden; }
 	.triple a.video:before, .list-box.solid a.video:before { width: 42px; height: 42px; margin: -21px 0 0 -21px; padding: 0 0 0 5px; font-size: 18px; line-height: 42px; }
 	.list-box.solid li:first-child a.video:before { width: 84px; height: 84px; margin: -42px 0 0 -42px; padding: 0 0 0 10px; font-size: 36px; line-height: 84px; }
 .uk-map { height: 550px; }
-	.uk-map .inner { height: 701px; margin-top: -150px; }	
+	.uk-map .inner { left: 35px; height: 701px; margin-top: -150px; }	
 	
 #root .list-entries li.featured div { -webkit-justify-content: center; justify-content: center; }
 }
@@ -1063,8 +1063,8 @@ h1, .s35, .heading-title h1, .heading-title h2, .heading-title h3, .heading-titl
 	.tabs-a > div { padding: 15px 15px .1px; }
 	.cols-a .tabs-a { min-height: 0; }
 	.tabs-a .list-aside.is-slider:last-child { margin-bottom: 0; }
-.uk-map { height: 425px; margin-top: 13px; }
-	.uk-map .inner { height: 542px; margin-top: -116px; }	
+.uk-map { height: 346px; margin-top: 13px; }
+	.uk-map .inner { left: 22px; height: 442px; margin-top: -95px; }	
 .jvectormap-container { }
 	.jvectormap-tip { padding: 9px 30px 8px 10px; font-size: 13px; }
 	.jvectormap-tip { -webkit-transform: translate(-25px,-5px); transform: translate(-25px,-5px); }
@@ -1311,8 +1311,8 @@ textarea { height: 100px; min-height: 100px; padding-left: 13px; }
 	#root .module-box .list-slider.is-slider { padding-left: 0; padding-right: 0; }
 }
 @media only screen and (max-width: 28.75em) { /* 460 */
-.uk-map { height: 86vw; }
-	.uk-map .inner { height: 110vw; margin-top: -24vw; }
+.uk-map { height: 74vw; }
+	.uk-map .inner { left: 5vw; height: 96vw; margin-top: -21vw; }
 }
 @media only screen and (max-width: 25em) { /* 400 */
 .list-box { }
