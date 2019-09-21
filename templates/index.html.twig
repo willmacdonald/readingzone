@@ -1,121 +1,19 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Families - ReadingZone</title>
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="theme-color" content="#ffffff">
-		<meta name="MobileOptimized" content="320">
-		<meta name="HandheldFriendly" content="true">
-		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, target-densitydpi=device-dpi, shrink-to-fit=no">
-		<meta name="author" content="https://psdhtml.me">
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Catamaran:300,400,500,700,800,900&amp;display=swap"> 
-		<link rel="preload" as="style" href="styles/screen.css">
-		<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Catamaran:300,400,500,700,800,900&amp;display=swap"> 
-		<link rel="stylesheet" media="screen" href="styles/screen.css">
-<link rel="icon" type="image/x-icon" href="favicon.png">
-		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">
-		<link rel="manifest" href="manifest.json">			
-		<link rel="preconnect" href="https://ajax.googleapis.com">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<meta name="msapplication-config" content="browserconfig.xml">
-		<meta property="og:title" content="Families">
-		<meta property="og:type" content="website">
-		<meta property="og:description" content="">
-		<meta property="og:site_name" content="ReadingZone">
-		<meta property="og:url" content="">
-		<meta property="og:image" content="">		
-		<meta name="twitter:title" content="Families">
-		<meta name="twitter:description" content="">
-		<meta name="twitter:site" content="ReadingZone">
-		<meta name="twitter:card" content="">
-		<meta name="twitter:image" content="">
-		<script type="application/ld+json">
-			[
-				{
-					"@context": "http://schema.org/",
-					"@type": "Organization",
-					"url": "https://readingzone.com",
-					"name": "ReadingZone",
-					"legalName": "ReadingZone Ltd",
-					"description": "",
-					"logo": "",
-					"image": "",
-					"contactPoint": {
-						"@type": "ContactPoint",
-						"contactType": "Customer service",
-						"telephone": "01737 843943"
-					},
-					"address": {
-						"@type": "PostalAddress",
-						"streetAddress": "PO Box 47251",
-						"addressLocality": "London",
-						"addressRegion": "LND",
-						"postalCode": "N12 9XW",
-						"addressCountry": "GB"
-					}
-				},
-				{ 
-					"@context": "http://schema.org", 
-					"@type": "WebSite", 
-					"url": "https://readingzone.com", 
-					"name": "ReadingZone",
-					"description": "",
-					"author": {
-						"@type": "Organization",
-						"url": "https://psdhtml.me",
-						"name": "psdHTML.me",
-						"description": "PSD to responsive HTML coding"
-					}
-				}
-			]
-		</script>
+{{ include('_head.html.twig') }}
 	</head>
 	<body>
 		<div id="root">
 			<header id="top">
-				<p id="logo"><a href="./" accesskey="h">ReadingZone <span>Helping you discover the best books for children &amp; teenagers</span></a></p>
-				<nav id="skip">
-					<ul>
-						<li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
-						<li><a href="#content" accesskey="c">Skip to content (c)</a></li>
-						<li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
-					</ul>
-				</nav>
-				<nav id="nav" aria-label="Navigation">
-					<ul>
-						<li class="mobile-only"><a href="./">Home</a></li>
-						<li class="active"><a accesskey="1" href="./">Families</a> <em>(1)</em></li>
-						<li><a accesskey="2" href="./">Children</a> <em>(2)</em></li>
-						<li><a accesskey="3" href="./">Teenagers</a> <em>(3)</em></li>
-						<li><a accesskey="4" href="./">Young Adult</a> <em>(4)</em></li>
-						<li><a accesskey="5" href="./">Schools &amp; Libraries</a> <em>(5)</em></li>
-					</ul>
-					<ul>
-						<li><a accesskey="6" href="./">Sign up to our newsletter</a> <em>(6)</em></li>
-						<li><a accesskey="7" href="./">About Us</a> <em>(7)</em></li>
-						<li><a accesskey="8" href="./">Contact Us</a> <em>(8)</em></li>
-					</ul>
-					<form action="./" method="post">
-						<p>
-							<label for="sa">Start typing...</label>
-							<input type="search" id="sa" name="sa" required>
-							<button type="submit">Submit</button>
-						</p>
-					</form>
-					<figure><a rel="external" href="./"><img src="http://placehold.it/970x130" alt="Placeholder" width="970" height="130"></a></figure>
-				</nav>
+				{{ include('_header.html.twig') }}
 			</header>             
 			<main id="content">
-				<article class="module-wide theme-coral light">
+				<article class="module-wide theme-azure light">
 					<header class="cols-a">
 						<div class="heading-title a">
-							<h1>Latest Books &amp; extracts</h1>
+							<h1>Latest Books &amp; extracts <i class="icon-books"></i></h1>
 							<p class="link-btn">
-								<a href="./" class="light desktop-only">See all latest booklists <i class="icon-arrow-right"></i></a>
 								<a href="./">See all latest books <i class="icon-arrow-right"></i></a>								
 							</p>
 						</div>
@@ -137,55 +35,72 @@
 								<div>
 									<div>
 										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books %}
 											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+												{% include '_book_teaser.html' with { 'book': highlighted_book.isbn } %}
 											</li>
-											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-											</li>
-											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-											</li>
-											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-											</li>
-											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-											</li>
-											<li>
-												<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-												<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-											</li>
+											{% endfor %}
 										</ul>
 									</div>
 									<div>
 										<p>Content for "3+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_three %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<p>Content for "5+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_five %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<p>Content for "7+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_seven %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<p>Content for "9+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_nine %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<p>Content for "11+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_eleven %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<p>Content for "14+" tab.</p>
+										<ul class="list-aside slider" data-count="2">
+											{% for highlighted_book in highlighted_books_fourteen %}
+												<li>
+													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
+												</li>
+											{% endfor %}
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -194,44 +109,83 @@
 							<figure><a rel="external" href="./"><img src="http://placehold.it/300x400" alt="Placeholder" width="300" height="400"></a></figure>
 						</aside>
 					</div>
-					<div class="double a">
-						<div>
-							<h2 class="s35">This months picks <a href="./" class="text-right">See all</a></h2>
-							<ul class="list-box solid">
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
+				</article>
+				<!--<article class="module-wide theme-azure light">
+					<header class="heading-title a">
+						<h1>Latest Books &amp; extracts <i class="icon-books"></i></h1>
+						<p class="link-btn">
+							<a href="./">See all latest books <i class="icon-arrow-right"></i></a>								
+						</p>
+					</header>
+					<div class="tabs-a">
+						<nav>
+							<ul>
+								<li><a href="./">0+</a></li>
+								<li><a href="./">3+</a></li>
+								<li><a href="./">5+</a></li>
+								<li><a href="./">7+</a></li>
+								<li><a href="./">9+</a></li>
+								<li><a href="./">11+</a></li>
+								<li><a href="./">14+</a></li>
 							</ul>
-						</div>
+						</nav>
 						<div>
-							<h2 class="s35">Growing Readers <a href="./" class="text-right">See all</a></h2>
-							<ul class="list-box solid">
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
-								<li>
-									<figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder" width="575" height="325"></a></figure>
-									<h2>Video Title</h2>
-								</li>
-							</ul>
+							<div>
+								<ul class="list-aside slider">
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+									<li>
+										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
+										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
+									</li>
+								</ul>
+							</div>
+							<div>
+								<p>Content for "3+" tab.</p>
+							</div>
+							<div>
+								<p>Content for "5+" tab.</p>
+							</div>
+							<div>
+								<p>Content for "7+" tab.</p>
+							</div>
+							<div>
+								<p>Content for "9+" tab.</p>
+							</div>
+							<div>
+								<p>Content for "11+" tab.</p>
+							</div>
+							<div>
+								<p>Content for "14+" tab.</p>
+							</div>
 						</div>
 					</div>
-				</article>
-				<article class="module-wide theme-coral">
+				</article>-->
+				<article class="module-wide theme-lime">
 					<header class="heading-title a">
 						<h2><span class="mobile-hide">ReadingZone</span> Authors of the Month</h2>
 						<p class="link-btn"><a class="a" href="./">See all authors <i class="icon-arrow-right"></i></a></p>
@@ -306,7 +260,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="module-wide theme-coral light">
+				<article>
 					<div class="double a">
 						<div>
 							<h2 class="s35 overlay-b">Competitions <i class="icon-podium"></i> <a href="./" class="text-right">See all</a></h2>
@@ -328,7 +282,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="module-wide theme-coral">
+				<article class="module-wide">
 					<h2 class="s35">This month’s highlights <i class="icon-sun"></i></h2>
 					<ul class="list-entries">
 						<li class="theme-coral">
@@ -380,7 +334,7 @@
 						</li>
 					</ul>
 				</article>
-				<article class="module-wide theme-coral light">
+				<article>
 					<div class="cols-a a">
 						<div>
 							<header class="heading-title">
@@ -455,28 +409,9 @@
 					</div>
 				</article>
 			</main>
-			<footer id="footer">
-				<nav>
-					<ul class="list-social">
-						<li><a rel="external" href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-instagram"></i> <span>Instagram</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-youtube"></i> <span>YouTube</span></a></li>
-					</ul>
-					<ul>
-						<li><a href="./">Sign up to our newsletter</a></li>
-						<li><a href="./">About us</a></li>
-						<li><a href="./">Contact us</a></li>
-					</ul>
-					<ul>
-						<li>&copy; Reading Zone <span class="date">2019</span></li>
-						<li><a href="./">Terms &amp; Conditions</a></li>
-						<li><a href="./">Privacy Policy</a></li>
-					</ul>
-				</nav>
-			</footer>
+			{{ include('_footer.html.twig') }}
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="javascript/jquery.js"><\/script>');</script>
 		<script defer src="javascript/scripts.js"></script>
 		<script defer src="javascript/custom.js"></script>

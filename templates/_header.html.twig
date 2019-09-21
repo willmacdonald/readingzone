@@ -1,0 +1,31 @@
+<p id="logo"><a href="./" accesskey="h">ReadingZone <span>Helping you discover the best books for children &amp; teenagers</span></a></p>
+<nav id="skip">
+    <ul>
+        <li><a href="#nav" accesskey="n">Skip to navigation (n)</a></li>
+        <li><a href="#content" accesskey="c">Skip to content (c)</a></li>
+        <li><a href="#footer" accesskey="f">Skip to footer (f)</a></li>
+    </ul>
+</nav>
+<nav id="nav" aria-label="Navigation">
+    <ul>
+        <li class="mobile-only"><a href="{{ path('homepage') }}">Home</a></li>
+        <li {% if app.request.get('_route') == 'families_homepage' %} class="active" {% endif %}><a accesskey="1" href="{{ path('families_homepage') }}">Families</a> <em>(1)</em></li>
+        <li {% if app.request.get('_route') == 'children_homepage' %} class="active" {% endif %}><a accesskey="2" href="{{ path('children_homepage') }}">Children</a> <em>(2)</em></li>
+        <li {% if app.request.get('_route') == 'teenagers_homepage' %} class="active" {% endif %}><a accesskey="3" href="{{ path('teenagers_homepage') }}">Teenagers</a> <em>(3)</em></li>
+        <li {% if app.request.get('_route') == 'young-adult_homepage '%} class="active" {% endif %}><a accesskey="4" href="{{ path('young-adult_homepage') }}">Young Adult</a> <em>(4)</em></li>
+        <li {% if app.request.get('_route') == 'schools_libraries_homepage' %} class="active" {% endif %}><a accesskey="5" href="{{ path('schools_libraries_homepage') }}">Schools &amp; Libraries</a> <em>(5)</em></li>
+    </ul>
+    <ul>
+        <li><a accesskey="6" href="./">Sign up to our newsletter</a> <em>(6)</em></li>
+        <li><a accesskey="7" href="./">About Us</a> <em>(7)</em></li>
+        <li><a accesskey="8" href="./">Contact Us</a> <em>(8)</em></li>
+    </ul>
+    <form action="./" method="post">
+        <p>
+            <label for="sa">Start typing...</label>
+            <input type="search" id="sa" name="sa" required>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+    <figure><a rel="external" href="./"><img src="http://placehold.it/970x130" alt="Placeholder" width="970" height="130"></a></figure>
+</nav>
