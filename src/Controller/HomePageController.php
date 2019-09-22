@@ -15,9 +15,34 @@ class HomePageController extends AbstractController {
      */
     public function index (Connection $connection) {
 
-        $highlighted_books = $connection->fetchAll('SELECT * FROM highlighted_books_homepage');
+        $age_ranges = ['zero', 'three', 'five', 'seven', 'nine', 'eleven', 'fourteen'];
+        $highlighted_books = $connection->fetchAll('SELECT 
+                                                            book_details.TI as title,
+                                                            book_details.FN as authorname,
+                                                            book_details.DF2 as summary,
+                                                            book_details.ISBN13 as isbn,
+                                                            highlighted_books_homepage.*
+                                                        FROM 
+                                                            book_details,
+                                                            highlighted_books_homepage
+                                                        WHERE                                                            
+                                                            highlighted_books_homepage.isbn = book_details.ISBN13
+                                                        ORDER BY 
+                                                            added 
+                                                        LIMIT 
+                                                            20');
 
-        return $this->render('_footer.html.twig');
+
+        foreach ($highlighted_books as $highlighted_book) {
+
+            foreach ($age_ranges as $age) {
+                if (isset($highlighted_book[$age]) && $highlighted_book[$age] === '1') {
+                    $send_to_template[$age][] = $highlighted_book;
+                }
+            }
+        }
+
+        return $this->render('index.html.twig',[ 'books' => $send_to_template, 'age_ranges' => $age_ranges]);
     }
 
     /**

@@ -33,75 +33,17 @@
 									</ul>
 								</nav>
 								<div>
+									{% for age in age_ranges %}
 									<div>
 										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books %}
+											{% for highlighted_book in books[age] %}
 											<li>
-												{% include '_book_teaser.html' with { 'book': highlighted_book.isbn } %}
+												{% include('_book_teaser.html.twig') with {'book': highlighted_book }  %}
 											</li>
 											{% endfor %}
 										</ul>
 									</div>
-									<div>
-										<p>Content for "3+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_three %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
-									<div>
-										<p>Content for "5+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_five %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
-									<div>
-										<p>Content for "7+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_seven %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
-									<div>
-										<p>Content for "9+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_nine %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
-									<div>
-										<p>Content for "11+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_eleven %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
-									<div>
-										<p>Content for "14+" tab.</p>
-										<ul class="list-aside slider" data-count="2">
-											{% for highlighted_book in highlighted_books_fourteen %}
-												<li>
-													{% include '_book_teaser.html' with { 'book': highlighted_book.book } %}
-												</li>
-											{% endfor %}
-										</ul>
-									</div>
+									{% endfor %}
 								</div>
 							</div>
 						</div>
