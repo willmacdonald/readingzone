@@ -144,61 +144,18 @@
 							</ul>
 						</nav>
 						<div>
-							<div>
-								<ul class="list-aside slider">
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></figure>
-										<h3>Title</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-										<p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-									</li>
-								</ul>
-							</div>
-							<div>
-								<p>Content for "Children" tab.</p>
-							</div>
-							<div>
-								<p>Content for "Teenagers" tab.</p>
-							</div>
-							<div>
-								<p>Content for "Young Adult" tab.</p>
-							</div>
-							<div>
-								<p>Content for "Debut" tab.</p>
-							</div>
-							<div>
-								<p>Content for "Featured Authors" tab.</p>
-							</div>
+							{% for range_month in author_range %}
+								<div>
+									<ul class="list-aside slider">
+										{% for featured_author in authors[range_month] %}
+											<li>
+												{% include('_book_teaser.html.twig') with {'book': featured_author }  %}
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+
+							{% endfor %}
 						</div>
 					</div>
 				</article>

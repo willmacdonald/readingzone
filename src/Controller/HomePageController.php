@@ -16,6 +16,8 @@ class HomePageController extends AbstractController {
     public function index (Connection $connection) {
 
         $age_ranges = ['zero', 'three', 'five', 'seven', 'nine', 'eleven', 'fourteen'];
+        $rz_authors_month_range = ['picture_book', 'children', 'teenager', 'young_adult', 'debut', 'featured_authors'];
+
         $highlighted_books = $connection->fetchAll('SELECT 
                                                             book_details.TI as title,
                                                             book_details.FN as authorname,
@@ -34,15 +36,45 @@ class HomePageController extends AbstractController {
 
 
         foreach ($highlighted_books as $highlighted_book) {
-
             foreach ($age_ranges as $age) {
                 if (isset($highlighted_book[$age]) && $highlighted_book[$age] === '1') {
-                    $send_to_template[$age][] = $highlighted_book;
+                    $featured_books[$age][] = $highlighted_book;
                 }
             }
         }
 
-        return $this->render('index.html.twig',[ 'books' => $send_to_template, 'age_ranges' => $age_ranges]);
+        $featured_authors = $connection->fetchAll('SELECT 
+                                                            book_details.TI as title,
+                                                            book_details.FN as authorname,
+                                                            book_details.DF2 as summary,
+                                                            book_details.ISBN13 as isbn,
+                                                            homepage_authors_month.*
+                                                        FROM 
+                                                            book_details,
+                                                            homepage_authors_month
+                                                        WHERE                                                            
+                                                            homepage_authors_month.isbn = book_details.ISBN13
+                                                        ORDER BY 
+                                                            added 
+                                                        LIMIT 
+                                                            20');
+
+
+        foreach ($featured_authors as $featured_author) {
+            foreach ($rz_authors_month_range as $rz_authors_month) {
+                if (isset($featured_author[$rz_authors_month]) && $featured_author[$rz_authors_month] === '1') {
+                    $authors[$rz_authors_month][] = $featured_author;
+                }
+            }
+        }
+
+
+        return $this->render('index.html.twig',[
+            'books' => $featured_books,
+            'age_ranges' => $age_ranges,
+            'authors' => $authors,
+            'author_range' => $rz_authors_month_range,
+            ]);
     }
 
     /**
