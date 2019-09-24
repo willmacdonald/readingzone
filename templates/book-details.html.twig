@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		{{ include('_head.html.twig') }}
+	</head>
+	<body>
+		<div id="root">
+			{{ include('_header.html.twig') }}
+			<main id="content">
+				<div class="cols-a">
+					<article>
+						<header class="heading-title">
+							<h1>{{ book_details.TI }}</h1>
+							<ul class="list-social">
+								<li>Share this</li>
+								<li><a href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
+								<li><a href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
+							</ul>
+						</header>
+						<div class="module-box">
+							<figure class="align-right">
+								<img src="//readingzone.com/thumb.php?cover={{ book_details.ISBN13 }}" alt="{{ book_details.TI }}" width="180px" style="width:180px;">
+							</figure>
+							<h2>By Author / Illustrator</h2>
+							<p>{{ book_details.FN }}</p>
+							<h2>Age range(s)</h2>
+							<p>Fusce eleifend arcu</p> 
+							<h2>Publisher details</h2>
+							<p>{{ book_details.PU2 }}</p>
+							<h2>Format</h2>
+							<p>{{ book_details.FMT }}</p>
+							<h2>Publication date</h2>
+							<p>{{ book_details.PUBPD }}/p>
+							<h2>Extract</h2>
+							<p>Aliquam erat volutpat. Nam accumsan ex sollicitudin aliquam pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget quam ut risus malesuada mattis. Nam condimentum mattis placerat. Maecenas posuere felis vitae cursus malesuada. Duis mollis turpis vel sem ultrices sagittis. Duis at pellentesque turpis, quis venenatis neque.</p>
+							<h2>Reviews</h2>
+							<p>Fusce eleifend arcu sit amet massa bibendum, vel tincidunt libero pretium. Aliquam vitae interdum ligula. Ut ac lorem imperdiet, blandit diam eu, feugiat ex. Sed convallis lacinia vehicula. Etiam sollicitudin et quam quis volutpat.</p> 
+							<h2>Synopsis</h2>
+							<p class="m45">{{ book_details.DF2 }}</p>
+							<h3>Other titles</h3>
+							<ul class="list-gallery">
+								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
+								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
+								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
+								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
+							</ul>
+						</div>
+					</article>
+					<aside>
+						<h2 class="s35">Related Articles</h2>
+						<ul class="list-related">
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+						</ul>
+					</aside>
+				</div>
+			</main>
+			<footer id="footer">
+				<nav>
+					<ul class="list-social">
+						<li><a rel="external" href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
+						<li><a rel="external" href="./"><i class="icon-instagram"></i> <span>Instagram</span></a></li>
+						<li><a rel="external" href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
+						<li><a rel="external" href="./"><i class="icon-youtube"></i> <span>YouTube</span></a></li>
+					</ul>
+					<ul>
+						<li><a href="./">Sign up to our newsletter</a></li>
+						<li><a href="./">About us</a></li>
+						<li><a href="./">Contact us</a></li>
+					</ul>
+					<ul>
+						<li>&copy; Reading Zone <span class="date">2019</span></li>
+						<li><a href="./">Terms &amp; Conditions</a></li>
+						<li><a href="./">Privacy Policy</a></li>
+					</ul>
+				</nav>
+			</footer>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="javascript/jquery.js"><\/script>');</script>
+		<script defer src="javascript/scripts.js"></script>
+		<script defer src="javascript/custom.js"></script>
+	</body>
+</html>
