@@ -39,22 +39,27 @@
 							<p class="m45">{{ book_details.DF2 }}</p>
 							<h3>Other titles</h3>
 							<ul class="list-gallery">
-								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
-								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
-								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
-								<li><a href="./"><img src="http://placehold.it/180x275" alt="Placeholder" width="180" height="275"></a></li>
+								{% for book in related_titles %}
+									<li>
+										<a href="{{ path('book_details', {isbn: book.ISBN13}) }}" title="{{ book.TI }} - {{ book.FN }}">
+											<span class="img"><img src="https://readingzone.com/thumb.php?cover={{ book.ISBN13 }}" alt="{{ book.TI }} - {{ book.FN }}" width="180px" style="width:180px;"></span>
+										</a>
+									</li>
+								{% endfor %}
+
 							</ul>
 						</div>
 					</article>
 					<aside>
 						<h2 class="s35">Related Articles</h2>
 						<ul class="list-related">
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
-							<li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60" height="85"></span> Headline Title dolor sit amet, consectetur Aenean in erat interdum</a></li>
+							{% for article in related_articles %}
+								<li>
+									<a href="" title="{{ article.headline }}">
+										<span class="img">
+											<img src="https://readingzone.com/news/{{ article }}.jpg" alt="{{ article.headline }}" width="60" height="85"></span> {{ article.headline }}</a>
+								</li>
+							{% endfor %}
 						</ul>
 					</aside>
 				</div>
