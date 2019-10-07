@@ -68,12 +68,17 @@ class HomePageController extends AbstractController {
             }
         }
 
+        $sql = 'SELECT id, headline, body FROM news ORDER BY mark LIMIT 3';
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $recent_news_summary = $stmt->fetchAll();
 
         return $this->render('index.html.twig',[
             'books' => $featured_books,
             'age_ranges' => $age_ranges,
             'authors' => $authors,
             'author_range' => $rz_authors_month_range,
+            'recent_news_summary' => $recent_news_summary,
             ]);
     }
 }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    {{ include('_head.html.twig') }}
+</head>
+<body>
+<div id="root">
+    {{ include('_header.html.twig') }}
+    <main id="content">
+        <div class="cols-a">
+            <article>
+                <header class="heading-title">
+                    <h1>About Us</h1>
+                    <ul class="list-social">
+                        <li>Share this</li>
+                        <li><a href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
+                        <li><a href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
+                    </ul>
+                </header>
+                <div class="module-box">
+                    {{ data.main_text }}
+                </div>
+            </article>
+            <aside>
+                <h2 class="s35">Related Articles</h2>
+                <ul class="list-related">
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                    <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder" width="60"
+                                                            height="85"></span> Headline Title dolor sit amet,
+                            consectetur Aenean in erat interdum</a></li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+    {{ include('_footer.html.twig') }}
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
+</html>

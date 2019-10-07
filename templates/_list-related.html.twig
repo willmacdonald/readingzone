@@ -1,0 +1,9 @@
+{% for item in recent_news_summary %}
+    <li>
+        <a href="{{ path('news_article', {news_id: item.id}) }}">
+        <span class="img"><img src="http://www.readingzone.com/thumb.php?news={{ item.id }}"
+                               alt="{{ item.headline  | length > 64 ? item.headline | slice(0,64) ~ '...' : item.headline }}"
+                               width="60" height="85">
+        </span>{{ item.body  | length > 128 ? item.body | slice(0,128) ~ '...' : item.body }}</a>
+    </li>
+{% endfor %}

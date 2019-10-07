@@ -13,8 +13,12 @@
 							<h1>{{ book_details.TI }}</h1>
 							<ul class="list-social">
 								<li>Share this</li>
-								<li><a href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
-								<li><a href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
+								<li>
+									<a href="https://www.facebook.com/sharer.php?u={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"
+									   target="_blank"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
+								<li>
+									<a href="https://www.twitter.com/share?url={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"><i
+												class="icon-twitter"></i> <span>Twitter</span></a></li>
 							</ul>
 						</header>
 						<div class="module-box">
@@ -30,11 +34,18 @@
 							<h2>Format</h2>
 							<p>{{ book_details.FMT }}</p>
 							<h2>Publication date</h2>
-							<p>{{ book_details.PUBPD }}/p>
+							<p>{{ book_details.PUBPD|slice(6,2) }}/{{ book_details.PUBPD|slice(4,2) }}
+								/{{ book_details.PUBPD|slice(0,4) }}</p>
 							<h2>Extract</h2>
-							<p>Aliquam erat volutpat. Nam accumsan ex sollicitudin aliquam pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget quam ut risus malesuada mattis. Nam condimentum mattis placerat. Maecenas posuere felis vitae cursus malesuada. Duis mollis turpis vel sem ultrices sagittis. Duis at pellentesque turpis, quis venenatis neque.</p>
+							<p>{% if book_details.extract_found %}
+									<a href="{{ path('download_extract', {'isbn': book_details.ISBN13 }) }}">Download
+										({{ book_details.extract_found }}M)</a>
+								{% else %}
+									No Extract
+								{% endif %}
+							</p>
 							<h2>Reviews</h2>
-							<p>Fusce eleifend arcu sit amet massa bibendum, vel tincidunt libero pretium. Aliquam vitae interdum ligula. Ut ac lorem imperdiet, blandit diam eu, feugiat ex. Sed convallis lacinia vehicula. Etiam sollicitudin et quam quis volutpat.</p> 
+							<p>{{ book_details.NBDREV }}</p>
 							<h2>Synopsis</h2>
 							<p class="m45">{{ book_details.DF2 }}</p>
 							<h3>Other titles</h3>
@@ -55,9 +66,11 @@
 						<ul class="list-related">
 							{% for article in related_articles %}
 								<li>
-									<a href="" title="{{ article.headline }}">
+									<a href="" title="">
 										<span class="img">
-											<img src="https://readingzone.com/news/{{ article }}.jpg" alt="{{ article.headline }}" width="60" height="85"></span> {{ article.headline }}</a>
+											<img src="https://readingzone.com/thumb.php?news={{ article.id }}" alt=""
+												 width="60" height="85"
+												 style="width:85px"></span> {{ article.headline }}</a>
 								</li>
 							{% endfor %}
 						</ul>
@@ -65,29 +78,9 @@
 				</div>
 			</main>
 			<footer id="footer">
-				<nav>
-					<ul class="list-social">
-						<li><a rel="external" href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-instagram"></i> <span>Instagram</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
-						<li><a rel="external" href="./"><i class="icon-youtube"></i> <span>YouTube</span></a></li>
-					</ul>
-					<ul>
-						<li><a href="./">Sign up to our newsletter</a></li>
-						<li><a href="./">About us</a></li>
-						<li><a href="./">Contact us</a></li>
-					</ul>
-					<ul>
-						<li>&copy; Reading Zone <span class="date">2019</span></li>
-						<li><a href="./">Terms &amp; Conditions</a></li>
-						<li><a href="./">Privacy Policy</a></li>
-					</ul>
-				</nav>
+				{{ include('_footer.html.twig') }}
 			</footer>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="javascript/jquery.js"><\/script>');</script>
-		<script defer src="javascript/scripts.js"></script>
-		<script defer src="javascript/custom.js"></script>
+		{{ include('_footer-scripts.html.twig') }}
 	</body>
 </html>

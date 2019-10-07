@@ -16,9 +16,9 @@
         <li {% if app.request.get('_route') == 'schools_libraries_homepage' %} class="active" {% endif %}><a accesskey="5" href="{{ path('schools_libraries_homepage') }}">Schools &amp; Libraries</a> <em>(5)</em></li>
     </ul>
     <ul>
-        <li><a accesskey="6" href="./">Sign up to our newsletter</a> <em>(6)</em></li>
-        <li><a accesskey="7" href="./">About Us</a> <em>(7)</em></li>
-        <li><a accesskey="8" href="./">Contact Us</a> <em>(8)</em></li>
+        <li><a accesskey="6" href="{{ path('sign_up') }}">Sign up to our newsletter</a> <em>(6)</em></li>
+        <li><a accesskey="7" href="{{ path('about_us') }}">About Us</a> <em>(7)</em></li>
+        <li><a accesskey="8" href="{{ path('contact_us') }}">Contact Us</a> <em>(8)</em></li>
     </ul>
     <form action="./" method="post">
         <p>
@@ -27,5 +27,5 @@
             <button type="submit">Submit</button>
         </p>
     </form>
-    <figure><a rel="external" href="./"><img src="http://placehold.it/970x130" alt="Placeholder" width="970" height="130"></a></figure>
+    <!-- figure><a rel="external" href="./"><img src="http://placehold.it/970x130" alt="Placeholder" width="970" height="130"></a></figure -->
 </nav>

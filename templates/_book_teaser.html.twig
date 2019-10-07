@@ -1,4 +1,5 @@
 
 <figure><img src="https://readingzone.com/thumb.php?cover={{ book.isbn }}" alt="{{ book.title }}" width="180px" style="width:180px;"></figure>
 <p>{{ book.summary | length > 200 ? book.summary | slice(0,200) ~ '...' : book.summary  }}</p>
-<p class="link-btn"><a href="">More <i class="icon-arrow-right"></i></a></p>
+<p class="link-btn"><a href="{{ path('book_details', {isbn: book.isbn}) }}">More <i class="icon-arrow-right"></i></a>
+</p>
