@@ -36,14 +36,18 @@
 							<h2>Publication date</h2>
 							<p>{{ book_details.PUBPD|slice(6,2) }}/{{ book_details.PUBPD|slice(4,2) }}
 								/{{ book_details.PUBPD|slice(0,4) }}</p>
+
 							<h2>Extract</h2>
-							<p>{% if book_details.extract_found %}
-									<a href="{{ path('download_extract', {'isbn': book_details.ISBN13 }) }}">Download
-										({{ book_details.extract_found }}M)</a>
-								{% else %}
-									No Extract
-								{% endif %}
-							</p>
+							<p>{{ book_details.extract_text | default('Extract not found') }}</p>
+							{% if book_details.extract_found is defined %}
+								<p>
+									{% for id, extract in book_details.extract_found %}
+										<a href="{{ path('download_extract', {'isbn': book_details.ISBN13, 'id': id }) }}">{{ extract }}</a>
+										<br/>
+									{% endfor %}
+								</p>
+							{% endif %}
+
 							<h2>Reviews</h2>
 							<p>{{ book_details.NBDREV }}</p>
 							<h2>Synopsis</h2>

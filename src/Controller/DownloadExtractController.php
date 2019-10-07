@@ -6,30 +6,35 @@ use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Driver\Connection;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 class DownloadExtractController extends AbstractController
 {
     /**
-     * @Route("/download_extract/{isbn}", name="download_extract", requirements={"isbn"="\d{13}"})
+     * @Route("/download_extract/{isbn}/{id}", name="download_extract", requirements={"isbn"="\d{13}","id"="\d+"})
+     * @param $connection
      * @param string $isbn
+     * @param string $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(string $isbn)
+    public function index(Connection $connection, string $isbn, string $id)
     {
 
         /*
          * Main details
          */
+        $sql = 'SELECT id, name, type  
+                    FROM extracts 
+                    WHERE isbn = :isbn
+                    AND id = :id
+                    LIMIT 1';
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(['isbn' => $isbn, 'id' => $id]);
+        $extract_details = $stmt->fetch();
 
-        $filesystem = new Filesystem();
-
-        if ($filesystem->exists('extract/' . $isbn . '.pdf')) {
-
-            $response = new Symfony\Component\HttpFoundation\BinaryFileResponse('extract/' . $isbn . '.pdf');
-            $response->headers->set('Content-Type', 'text/plain');
-            return $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'extract/' . $isbn . '.pdf');
+        if ($extract_details) {
+            $response = new Symfony\Component\HttpFoundation\BinaryFileResponse('extract/' . $extract_details['id']);
+            $response->headers->set('Content-Type', $extract_details['type']);
+            return $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $extract_details['name']);
         } else {
             throw $this->createNotFoundException('Book extract not found');
         }

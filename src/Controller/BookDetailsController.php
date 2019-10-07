@@ -2,16 +2,14 @@
 
 namespace App\Controller;
 
-use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Driver\Connection;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @param null $array
- * @return array
+ * @param array $array
+ * @return Array
  */
 
 function array_flatten(Array $array = null): Array
@@ -39,14 +37,17 @@ class BookDetailsController extends AbstractController
      * @Route("/book/{isbn}", name="book_details", requirements={"isbn"="\d{13}"})
      * @param Connection $connection
      * @param string $isbn
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index(Connection $connection, string $isbn) {
 
         /*
          * Main details
          */
-        $sql = 'SELECT TI, FN, DF2, PU2, PUBPD, NBDREV, FMT, ISBN13 FROM book_details WHERE ISBN13 = :isbn LIMIT 1';
+        $sql = 'SELECT TI, FN, DF2, PU2, PUBPD, NBDREV, FMT, ISBN13 
+                    FROM book_details 
+                    WHERE ISBN13 = :isbn 
+                    LIMIT 1';
         $stmt = $connection->prepare($sql);
         $stmt->execute(['isbn' => $isbn]);
         $books_details = $stmt->fetch();
@@ -54,8 +55,14 @@ class BookDetailsController extends AbstractController
         /**
          * related title
          */
+        $sql = "SELECT TI, FN, ISBN13 
+                FROM book_details 
+                WHERE 
+                    FN LIKE :FN 
+                    AND ISBN != :isbn
+                    AND FMT != 'Electronic book text'
+                LIMIT 4 ";
 
-        $sql = 'SELECT TI, FN, ISBN13 FROM book_details WHERE FN LIKE :FN AND ISBN != :isbn LIMIT 4 ';
         $stmt = $connection->prepare($sql);
         $stmt->execute(
             ['isbn' => $isbn,
@@ -67,10 +74,15 @@ class BookDetailsController extends AbstractController
          * related articles
          *
          */
-
-
-        $sql = 'SELECT id, headline FROM news WHERE isbn = :isbn OR headline like :FN OR body like :FN OR 
-                                    headline like :TI OR body like :TI ORDER BY mark LIMIT 6';
+        $sql = 'SELECT id, headline 
+                FROM news 
+                WHERE isbn = :isbn 
+                    OR headline like :FN 
+                    OR body like :FN 
+                    OR headline like :TI
+                    OR body like :TI 
+                ORDER BY mark 
+                LIMIT 6';
         $stmt = $connection->prepare($sql);
         $stmt->execute(
             [   'isbn' => $isbn,
@@ -91,19 +103,27 @@ class BookDetailsController extends AbstractController
          * }
          */
 
-        //$filesystem = new Filesystem();
-
-        $sql = 'SELECT id, size 
+        /**
+         * See if there is an extract to download
+         */
+        $sql = 'SELECT id as extract_id, size, extract_text, type 
                 FROM extracts 
-                WHERE isbn = :isbn 
-                LIMIT 1';
+                WHERE isbn = :isbn';
         $stmt = $connection->prepare($sql);
         $stmt->execute(
             ['isbn' => $isbn,
             ]);
-        $book_extract = $stmt->fetch();
+        $book_extracts = $stmt->fetchAll();
 
-        $books_details['extract_found'] = number_format($book_extract['size']/1048576, 2);
+        foreach ($book_extracts as $book_extract) {
+            $books_details['extract_found'][$book_extract['extract_id']] = $book_extract['size'] ?
+                substr($book_extract['type'], strpos($book_extract['type'], '/') + 1) . ' (' . number_format($book_extract['size'] / 1048576, 2) . 'M) ' :
+                false;
+
+            $books_details['extract_text'] = strlen($book_extract['extract_text']) > 0 ?
+                $book_extract['extract_text'] :
+                false;
+        }
 
         return $this->render('book-details.html.twig', [
             'book_details' => $books_details,
