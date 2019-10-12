@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+{% include('_head.html.twig') %}
+<body>
+<div id="root">
+    <header id="top">
+        {% include('_header.html.twig') %}
+    </header>
+    <main id="content">
+        <article class="module-wide theme-azure">
+            <h1 class="s35">Latest Project<i class="icon-podium"></i></h1>
+            <ul class="list-entries">
+                <li class="featured">
+                    <figure>
+                        {% if project.video is defined %}
+                            <iframe src="https://player.vimeo.com/video/{{ project.video }}" width="645" height="460"
+                                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        {% else %}
+                            <img src="{{ project.image }}" alt="Placeholder" width="645" height="460">
+                        {% endif %}
+                    </figure>
+                    <div>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.intro_text }}</p>
+                    </div>
+                </li>
+                <li class="theme-lime no-img">
+                    <h3>Competition guidelines</h3>
+                    <div>
+                        {{ project.guidelines }}
+                        {% if project.guidelines_pdf is defined %}
+                            <p class="link-btn text-right"><a href="{{ project.guidelines_pdf }}" class="a">PDF download
+                                    <i class="icon-arrow-down"></i></a></p>
+                        {% endif %}
+                    </div>
+                </li>
+                <li class="no-img">
+                    <h3>How to Send Your Entry</h3>
+                    <div>
+                        {{ project.how_to_send }}
+                        {% if project.how_to_send_pdf is defined %}
+                            <p class="link-btn text-right"><a href="./" class="a">Entry form <i
+                                            class="icon-arrow-right"></i></a></p>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+        </article>
+        <article class="module-wide theme-azure light">
+            <h2 class="s35 overlay-navy">Resources</h2>
+            <ul class="list-box theme-navy">
+
+                {% if project.video1_id is not empty %}
+                    {% include ('_video_resource.html.twig')
+                        with {'title': project.video1_title,
+                        'video': project.video1_id,
+                        'text': project.video1_text } %}
+                {% endif %}
+
+                {% if project.video2_id is not empty %}
+                    {% include ('_video_resource.html.twig')
+                        with {'title': project.video2_title,
+                        'video': project.video2_id,
+                        'text': project.video2_text } %}
+                {% endif %}
+
+                {% if project.video3_id is not empty %}
+                    {% include ('_video_resource.html.twig')
+                        with {'title': project.video3_title,
+                        'video': project.video3_id,
+                        'text': project.video3_text } %}
+                {% endif %}
+
+
+                {% if project.pdf1_title is not empty %}
+                    {% include ('_document_project_resource.html.twig')
+                        with {'title': project.pdf1_title,
+                        'coverimg': project.pdf1_img,
+                        'text': project.pdf1_text,
+                        'pdf': project.pdf1_link} %}
+                {% endif %}
+
+                {% if project.pdf2_title is not empty %}
+                    {% include ('_document_project_resource.html.twig')
+                        with {'title': project.pdf2_title,
+                        'coverimg': project.pdf2_img,
+                        'text': project.pdf2_text,
+                        'pdf': project.pdf2_link} %}
+                {% endif %}
+
+                {% if project.pdf3_title is not empty %}
+                    {% include ('_document_project_resource.html.twig')
+                        with {'title': project.pdf3_title,
+                        'coverimg': project.pdf3_img,
+                        'text': project.pdf3_text,
+                        'pdf': project.pdf3_link} %}
+                {% endif %}
+
+            </ul>
+        </article>
+        {#
+        <p class="link-btn cta theme-navy"><span>Subscribe to ReadingZone Plus for more digital ‘book plus’ activities</span> <a href="./">Subscribe <i class="icon-arrow-right"></i></a> <span class="offset-wide"><img src="images/background-j.jpg" alt="Placeholder" width="2000" height="2000"></span></p>
+        #}
+        <article class="module-wide theme-lime">
+            <h2 class="s35">Get Creative <a href="./" class="text-right">See all</a></h2>
+            <ul class="list-box">
+                <li>
+                    <h3>Primary schools termly competition</h3>
+                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+                <li>
+                    <h3>Secondary schools termly competition</h3>
+                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+                <li>
+                    <h3>Make &amp; Send an Audio Book</h3>
+                    <figure><img src="http://placehold.it/350x335" alt="Placeholder" width="350" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+            </ul>
+        </article>
+        <article class="module-wide theme-coral">
+            <h2 class="s35">Previous Entries <a href="./" class="text-right">See all</a></h2>
+            <ul class="list-box">
+                <li>
+                    <h3>Primary schools termly competition</h3>
+                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+                <li>
+                    <h3>Secondary schools termly competition</h3>
+                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+                <li>
+                    <h3>Make &amp; Send an Audio Book</h3>
+                    <figure><img src="http://placehold.it/350x335" alt="Placeholder" width="350" height="335">
+                        <figcaption>Title</figcaption>
+                    </figure>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
+                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                </li>
+            </ul>
+        </article>
+    </main>
+    {{ include('_footer.html.twig') }}
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
+</html>

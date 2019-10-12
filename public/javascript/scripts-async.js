@@ -39,5 +39,5 @@ var ariaRemove=function(els){els.forEach(function(d){d.removeAttribute('aria-hid
 
 // keep loading
 var tag = document.createElement('script');
-tag.src = "javascript/custom-async.js";
+tag.src = "/javascript/custom-async.js";
 document.body.appendChild(tag);
