@@ -1,90 +1,94 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-	<head>
-		{{ include('_head.html.twig') }}
-	</head>
-	<body>
-		<div id="root">
-			{{ include('_header.html.twig') }}
-			<main id="content">
-				<div class="cols-a">
-					<article>
-						<header class="heading-title">
-							<h1>{{ book_details.TI }}</h1>
-							<ul class="list-social">
-								<li>Share this</li>
-								<li>
-									<a href="https://www.facebook.com/sharer.php?u={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"
-									   target="_blank"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
-								<li>
-									<a href="https://www.twitter.com/share?url={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"><i
-												class="icon-twitter"></i> <span>Twitter</span></a></li>
-							</ul>
-						</header>
-						<div class="module-box">
-							<figure class="align-right">
-								<img src="//readingzone.com/thumb.php?cover={{ book_details.ISBN13 }}" alt="{{ book_details.TI }}" width="180px" style="width:180px;">
-							</figure>
-							<h2>By Author / Illustrator</h2>
-							<p>{{ book_details.FN }}</p>
-							<h2>Age range(s)</h2>
-							<p>Fusce eleifend arcu</p> 
-							<h2>Publisher details</h2>
-							<p>{{ book_details.PU2 }}</p>
-							<h2>Format</h2>
-							<p>{{ book_details.FMT }}</p>
-							<h2>Publication date</h2>
-							<p>{{ book_details.PUBPD|slice(6,2) }}/{{ book_details.PUBPD|slice(4,2) }}
-								/{{ book_details.PUBPD|slice(0,4) }}</p>
 
-							<h2>Extract</h2>
-							<p>{{ book_details.extract_text | default('Extract not found') }}</p>
-							{% if book_details.extract_found is defined %}
-								<p>
-									{% for id, extract in book_details.extract_found %}
-										<a href="{{ path('download_extract', {'isbn': book_details.ISBN13, 'id': id }) }}">{{ extract }}</a>
-										<br/>
-									{% endfor %}
-								</p>
-							{% endif %}
+{{ include('_head.html.twig') }}
 
-							<h2>Reviews</h2>
-							<p>{{ book_details.NBDREV }}</p>
-							<h2>Synopsis</h2>
-							<p class="m45">{{ book_details.DF2 }}</p>
-							<h3>Other titles</h3>
-							<ul class="list-gallery">
-								{% for book in related_titles %}
-									<li>
-										<a href="{{ path('book_details', {isbn: book.ISBN13}) }}" title="{{ book.TI }} - {{ book.FN }}">
-											<span class="img"><img src="https://readingzone.com/thumb.php?cover={{ book.ISBN13 }}" alt="{{ book.TI }} - {{ book.FN }}" width="180px" style="width:180px;"></span>
-										</a>
-									</li>
-								{% endfor %}
+<body>
+<div id="root">
+    {{ include('_header.html.twig') }}
+    <main id="content">
+        <div class="cols-a">
+            <article>
+                <header class="heading-title">
+                    <h1>{{ book_details.TI }}</h1>
+                    <ul class="list-social">
+                        <li>Share this</li>
+                        <li>
+                            <a href="https://www.facebook.com/sharer.php?u={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"
+                               target="_blank"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
+                        <li>
+                            <a href="https://www.twitter.com/share?url={{ url('book_details', {'isbn': book_details.ISBN13 })|url_encode }}"><i
+                                        class="icon-twitter"></i> <span>Twitter</span></a></li>
+                    </ul>
+                </header>
+                <div class="module-box">
+                    <figure class="align-right">
+                        <img src="//readingzone.com/thumb.php?cover={{ book_details.ISBN13 }}"
+                             alt="{{ book_details.TI }}" width="180px" style="width:180px;">
+                    </figure>
+                    <h2>By Author / Illustrator</h2>
+                    <p>{{ book_details.FN }}</p>
+                    <h2>Age range(s)</h2>
+                    <p>Fusce eleifend arcu</p>
+                    <h2>Publisher details</h2>
+                    <p>{{ book_details.PU2 }}</p>
+                    <h2>Format</h2>
+                    <p>{{ book_details.FMT }}</p>
+                    <h2>Publication date</h2>
+                    <p>{{ book_details.PUBPD|slice(6,2) }}/{{ book_details.PUBPD|slice(4,2) }}
+                        /{{ book_details.PUBPD|slice(0,4) }}</p>
 
-							</ul>
-						</div>
-					</article>
-					<aside>
-						<h2 class="s35">Related Articles</h2>
-						<ul class="list-related">
-							{% for article in related_articles %}
-								<li>
-									<a href="" title="">
+                    <h2>Extract</h2>
+                    <p>{{ book_details.extract_text | default('Extract not found') }}</p>
+                    {% if book_details.extract_found is defined %}
+                        <p>
+                            {% for id, extract in book_details.extract_found %}
+                                <a href="{{ path('download_extract', {'isbn': book_details.ISBN13, 'id': id }) }}">{{ extract }}</a>
+                                <br/>
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+
+                    <h2>Reviews</h2>
+                    <p>{{ book_details.NBDREV }}</p>
+                    <h2>Synopsis</h2>
+                    <p class="m45">{{ book_details.DF2 }}</p>
+                    <h3>Other titles</h3>
+                    <ul class="list-gallery">
+                        {% for book in related_titles %}
+                            <li>
+                                <a href="{{ path('book_details', {isbn: book.ISBN13}) }}"
+                                   title="{{ book.TI }} - {{ book.FN }}">
+                                    <span class="img"><img
+                                                src="https://readingzone.com/thumb.php?cover={{ book.ISBN13 }}"
+                                                alt="{{ book.TI }} - {{ book.FN }}" width="180px" style="width:180px;"></span>
+                                </a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </article>
+            <aside>
+                <h2 class="s35">Related Articles</h2>
+                <ul class="list-related">
+                    {% for article in related_articles %}
+                        <li>
+                            <a href="" title="">
 										<span class="img">
 											<img src="https://readingzone.com/thumb.php?news={{ article.id }}" alt=""
-												 width="60" height="85"
-												 style="width:85px"></span> {{ article.headline }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-					</aside>
-				</div>
-			</main>
-			<footer id="footer">
-				{{ include('_footer.html.twig') }}
-			</footer>
-		</div>
-		{{ include('_footer-scripts.html.twig') }}
-	</body>
+                                                 width="60" height="85"
+                                                 style="width:85px"></span> {{ article.headline }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </aside>
+        </div>
+    </main>
+    <footer id="footer">
+        {{ include('_footer.html.twig') }}
+    </footer>
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
 </html>

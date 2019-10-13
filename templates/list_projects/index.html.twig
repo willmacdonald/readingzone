@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+{{ include('_head.html.twig') }}
+
+<body>
+<div id="root">
+    <header id="top">
+        {{ include('_header.html.twig') }}
+    </header>
+    <main id="content">
+        <header class="heading-title">
+            <h1>{{ project_type }}</h1>
+        </header>
+        <ul class="list-box theme-navy">
+
+            {% for project in projects %}
+                {% include ('_video_resource.html.twig') with project %}
+            {% endfor %}
+
+            {# <nav class="nav-pagination">
+                <ol>
+                    <li class="prev"><a href="./">Prev<span class="hidden">ious</span></a></li>
+                    <li><a href="./">1</a></li>
+                    <li class="active"><a href="./">2</a></li>
+                    <li><a href="./">3</a></li>
+                    <li><a href="./">4</a></li>
+                    <li><a href="./">5</a></li>
+                    <li>...</li>
+                    <li><a href="./">120</a></li>
+                    <li class="next"><a href="./">Next</a></li>
+                </ol>
+            </nav>
+            #}
+        </ul>
+    </main>
+    {{ include('_footer.html.twig') }}
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
+</html>

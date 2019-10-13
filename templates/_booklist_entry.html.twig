@@ -1,0 +1,14 @@
+<li>
+    <figure><img src="https://www.readingzone.com/thumb.php?cover={{ book.isbn }}" alt="{{ book.TI }}" width="130"
+                 height="200">
+    </figure>
+    <h2>{{ book.TI }}<br> {{ book.FN }}</h2>
+    <ul>
+        <li>{{ book.PU }}</li>
+        <li>{{ book.isbn }}</li>
+        <li>{{ book.PUBD }}</li>
+    </ul>
+    <p>{{ book.DF2 | length > 200 ? book.DF2 | slice(0,200) ~ '...' : book.DF2 }}</p>
+    <p class="link-btn"><a href="{{ path('/book_details', {'isbn': book.isbn} ) }}">More <i
+                    class="icon-arrow-right"></i></a></p>
+</li>

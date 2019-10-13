@@ -2,18 +2,20 @@
 
 namespace App\Controller;
 
-use http\Env\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Driver\Connection;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class HomePageController extends AbstractController {
+class HomePageController extends AbstractController
+{
     /**
      * @Route("/", name="homepage")
      * @param Connection $connection
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function index (Connection $connection) {
+    public function index(Connection $connection)
+    {
 
         $age_ranges = ['zero', 'three', 'five', 'seven', 'nine', 'eleven', 'fourteen'];
         $rz_authors_month_range = ['picture_book', 'children', 'teenager', 'young_adult', 'debut', 'featured_authors'];
@@ -34,6 +36,8 @@ class HomePageController extends AbstractController {
                                                         LIMIT 
                                                             20');
 
+
+        $featured_books = array();
 
         foreach ($highlighted_books as $highlighted_book) {
             foreach ($age_ranges as $age) {
@@ -59,6 +63,7 @@ class HomePageController extends AbstractController {
                                                         LIMIT 
                                                             20');
 
+        $authors = array();
 
         foreach ($featured_authors as $featured_author) {
             foreach ($rz_authors_month_range as $rz_authors_month) {
@@ -73,12 +78,96 @@ class HomePageController extends AbstractController {
         $stmt->execute();
         $recent_news_summary = $stmt->fetchAll();
 
-        return $this->render('index.html.twig',[
+
+        /**
+         * Get the latest projects
+         */
+
+        $project_name = array(
+            'trailer' => 'Book Trailers',
+            'podcast' => 'Podcasts',
+            'audio' => 'Audio Books',
+            'video' => 'Vlogs and Videos',
+        );
+
+        $themes = array(
+            'trailer' => 'theme-coral',
+            'podcast' => 'theme-carrot',
+            'audio' => 'theme-lime',
+            'video' => '',
+        );
+
+        $sql = "SELECT image, video, title, project, intro_text, id 
+                FROM projects
+                WHERE project = :project
+                ORDER BY mark
+                LIMIT 1";
+
+        $stmt = $connection->prepare($sql);
+
+        $latest_projects = array();
+
+        foreach ($project_name as $k => $v) {
+            $stmt->execute(['project' => $k]);
+            $latest_projects[$k] = $stmt->fetch();
+        }
+
+        /**
+         * Bookshop
+         * 'ya','children','schools','teens','families'
+         */
+
+        $shop_filters = array(
+            'children' => 'Children',
+            'teens' => 'Teens',
+            'ya' => 'Young Adult',
+            'families' => 'Families',
+            'schools' => 'Schools & Libraries',
+        );
+
+        $sql = "SELECT TI, FN, bookshop.isbn  as isbn, tag
+                    FROM book_details, bookshop
+                    WHERE bookshop.isbn = book_details.ISBN13
+                    AND bookshop.popular = 1
+                    ORDER BY mark";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $popular_books = $stmt->fetchAll();
+
+        $sql = "SELECT book_details.TI, book_details.FN, bookshop.isbn as isbn, bookshop_categories.name, tag
+                FROM book_details, bookshop, bookshop_categories
+                WHERE bookshop_categories.live = 1
+                AND bookshop_categories.id = bookshop.category
+                AND bookshop.isbn = book_details.ISBN13";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $bookshop_1 = $stmt->fetchAll();
+
+        $sql = "SELECT book_details.TI, book_details.FN, bookshop.isbn as isbn, bookshop_categories.name, tag
+                FROM book_details, bookshop, bookshop_categories
+                WHERE bookshop_categories.live = 2
+                AND bookshop_categories.id = bookshop.category
+                AND bookshop.isbn = book_details.ISBN13";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $bookshop_2 = $stmt->fetchAll();
+
+        return $this->render('index.html.twig', [
             'books' => $featured_books,
             'age_ranges' => $age_ranges,
             'authors' => $authors,
             'author_range' => $rz_authors_month_range,
             'recent_news_summary' => $recent_news_summary,
-            ]);
+            'latest_projects' => $latest_projects,
+            'project_types' => $project_name,
+            'themes' => $themes,
+            'shop_filters' => $shop_filters,
+            'popular_books' => $popular_books,
+            'bookshop_1' => $bookshop_1,
+            'bookshop_2' => $bookshop_2,
+        ]);
     }
 }

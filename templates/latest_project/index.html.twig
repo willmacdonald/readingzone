@@ -50,21 +50,21 @@
             <h2 class="s35 overlay-navy">Resources</h2>
             <ul class="list-box theme-navy">
 
-                {% if project.video1_id is not empty %}
+                {% if project.video1_id %}
                     {% include ('_video_resource.html.twig')
                         with {'title': project.video1_title,
                         'video': project.video1_id,
                         'text': project.video1_text } %}
                 {% endif %}
 
-                {% if project.video2_id is not empty %}
+                {% if project.video2_id %}
                     {% include ('_video_resource.html.twig')
                         with {'title': project.video2_title,
                         'video': project.video2_id,
                         'text': project.video2_text } %}
                 {% endif %}
 
-                {% if project.video3_id is not empty %}
+                {% if project.video3_id %}
                     {% include ('_video_resource.html.twig')
                         with {'title': project.video3_title,
                         'video': project.video3_id,
@@ -72,7 +72,7 @@
                 {% endif %}
 
 
-                {% if project.pdf1_title is not empty %}
+                {% if project.pdf1_title %}
                     {% include ('_document_project_resource.html.twig')
                         with {'title': project.pdf1_title,
                         'coverimg': project.pdf1_img,
@@ -80,7 +80,7 @@
                         'pdf': project.pdf1_link} %}
                 {% endif %}
 
-                {% if project.pdf2_title is not empty %}
+                {% if project.pdf2_title %}
                     {% include ('_document_project_resource.html.twig')
                         with {'title': project.pdf2_title,
                         'coverimg': project.pdf2_img,
@@ -88,7 +88,7 @@
                         'pdf': project.pdf2_link} %}
                 {% endif %}
 
-                {% if project.pdf3_title is not empty %}
+                {% if project.pdf3_title %}
                     {% include ('_document_project_resource.html.twig')
                         with {'title': project.pdf3_title,
                         'coverimg': project.pdf3_img,
