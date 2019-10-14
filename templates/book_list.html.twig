@@ -11,6 +11,9 @@
                     <h1>{{ booklist | default('Booklist') }}</h1>
                 </header>
                 <ul class="list-results a">
+                    {% for book in books %}
+                        {{ include('_booklist_entry.html.twig') with book }}
+                    {% endfor %}
                     <li>
                         <figure><img src="http://placehold.it/130x200" alt="Placeholder" width="130" height="200">
                         </figure>

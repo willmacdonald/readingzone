@@ -35,8 +35,7 @@
                     <h2>Format</h2>
                     <p>{{ book_details.FMT }}</p>
                     <h2>Publication date</h2>
-                    <p>{{ book_details.PUBPD|slice(6,2) }}/{{ book_details.PUBPD|slice(4,2) }}
-                        /{{ book_details.PUBPD|slice(0,4) }}</p>
+                    <p>{{ include('_PUBPD_format.html.twig', {'PUBPD': book_details.PUBPD }) }}</p>
 
                     <h2>Extract</h2>
                     <p>{{ book_details.extract_text | default('Extract not found') }}</p>

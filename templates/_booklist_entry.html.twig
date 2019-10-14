@@ -6,9 +6,9 @@
     <ul>
         <li>{{ book.PU }}</li>
         <li>{{ book.isbn }}</li>
-        <li>{{ book.PUBD }}</li>
+        <li>{{ include('_PUBPD_format.html.twig', {'PUBPD': book.PUBPD}) }}</li>
     </ul>
     <p>{{ book.DF2 | length > 200 ? book.DF2 | slice(0,200) ~ '...' : book.DF2 }}</p>
-    <p class="link-btn"><a href="{{ path('/book_details', {'isbn': book.isbn} ) }}">More <i
+    <p class="link-btn"><a href="{{ path('book_details', {'isbn': book.isbn} ) }}">More <i
                     class="icon-arrow-right"></i></a></p>
 </li>

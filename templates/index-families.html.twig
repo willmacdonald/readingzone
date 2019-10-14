@@ -35,70 +35,20 @@
                             </ul>
                         </nav>
                         <div>
-                            <div>
-                                <ul class="list-aside slider" data-count="2">
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                    <li>
-                                        <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                                     height="275"></figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat
-                                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                        <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <p>Content for "3+" tab.</p>
-                            </div>
-                            <div>
-                                <p>Content for "5+" tab.</p>
-                            </div>
-                            <div>
-                                <p>Content for "7+" tab.</p>
-                            </div>
-                            <div>
-                                <p>Content for "9+" tab.</p>
-                            </div>
-                            <div>
-                                <p>Content for "11+" tab.</p>
-                            </div>
-                            <div>
-                                <p>Content for "14+" tab.</p>
-                            </div>
+                            {% for age in age_ranges %}
+                                <div>
+                                    <ul class="list-aside slider" data-count="2">
+                                        {% for highlighted_book in books[age] %}
+                                            <li>
+                                                {% include('_book_teaser.html.twig') with {'book': highlighted_book } %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <p class="link-btn" style="float: right;"><a href="./">More <i
+                                                    class="icon-arrow-right"></i></a>
+                                    </p>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

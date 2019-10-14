@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+{{ include('_head.html.twig') }}
+<body>
+<div id="root">
+    {{ include('_header.html.twig') }}
+    <main id="content">
+        <div class="cols-a">
+            <article>
+                <header class="heading-title">
+                    <h1>{{ booklist | default('Booklist') }}</h1>
+                </header>
+                <ul class="list-results a">
+                    {% for book in books %}
+                        {{ include('_booklist_entry.html.twig', {'book': book}) }}
+                    {% endfor %}
+                </ul>
+                {# <nav class="nav-pagination">
+                    <ol>
+                        <li class="prev"><a href="./">Prev<span class="hidden">ious</span></a></li>
+                        <li><a href="./">1</a></li>
+                        <li class="active"><a href="./">2</a></li>
+                        <li><a href="./">3</a></li>
+                        <li><a href="./">4</a></li>
+                        <li><a href="./">5</a></li>
+                        <li>...</li>
+                        <li><a href="./">120</a></li>
+                        <li class="next"><a href="./">Next</a></li>
+                    </ol>
+                </nav>
+                #}
+            </article>
+            <aside>
+                {{ include('_twitter.html.twig') }}
+            </aside>
+        </div>
+    </main>
+    {{ include('_footer.html.twig') }}
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
+</html>
