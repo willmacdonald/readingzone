@@ -18,8 +18,10 @@ class HomePageController extends AbstractController
     {
 
         $age_ranges = ['zero', 'three', 'five', 'seven', 'nine', 'eleven', 'fourteen'];
-        $rz_authors_month_range = ['picture_book', 'children', 'teenager', 'young_adult', 'debut', 'featured_authors'];
 
+        /**
+         * Highlighted books of the month
+         */
         $highlighted_books = $connection->fetchAll('SELECT 
                                                             book_details.TI as title,
                                                             book_details.FN as authorname,
@@ -47,6 +49,12 @@ class HomePageController extends AbstractController
             }
         }
 
+        /**
+         * ReadingZone Authors of the Month
+         */
+
+        $rz_authors_month_range = ['picture_book', 'children', 'teenager', 'young_adult', 'debut', 'featured_authors'];
+
         $featured_authors = $connection->fetchAll('SELECT 
                                                             book_details.TI as title,
                                                             book_details.FN as authorname,
@@ -73,11 +81,43 @@ class HomePageController extends AbstractController
             }
         }
 
+
+        /**
+         * Recent news summary
+         */
         $sql = 'SELECT id, headline, body FROM news ORDER BY mark LIMIT 3';
         $stmt = $connection->prepare($sql);
         $stmt->execute();
         $recent_news_summary = $stmt->fetchAll();
 
+
+        /**
+         * Get latest Competitions
+         */
+
+        $sql = "SELECT title, intro_text, image, id 
+                FROM projects 
+                WHERE front_competition = 1 
+                ORDER BY mark 
+                LIMIT 1";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $new_competition = $stmt->fetch();
+
+        /**
+         * Get latest Project
+         */
+
+        $sql = "SELECT title, intro_text, image, id 
+                FROM projects 
+                WHERE front_project = 1 
+                ORDER BY mark 
+                LIMIT 1";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $new_project = $stmt->fetch();
 
         /**
          * Get the latest projects
@@ -159,7 +199,7 @@ class HomePageController extends AbstractController
             'books' => $featured_books,
             'age_ranges' => $age_ranges,
             'authors' => $authors,
-            'author_range' => $rz_authors_month_range,
+            'author_range' => $featured_authors,
             'recent_news_summary' => $recent_news_summary,
             'latest_projects' => $latest_projects,
             'project_types' => $project_name,
@@ -168,6 +208,10 @@ class HomePageController extends AbstractController
             'popular_books' => $popular_books,
             'bookshop_1' => $bookshop_1,
             'bookshop_2' => $bookshop_2,
+            'competition' => $new_competition,
+            'project' => $new_project,
+            'rz_authors_month_range' => $rz_authors_month_range,
+
         ]);
     }
 }

@@ -14,9 +14,10 @@
                 <div class="heading-title a">
                     <h1>Latest Books &amp; extracts</h1>
                     <p class="link-btn">
-                        <a href="./" class="light desktop-only">See all latest booklists <i
+                        {#<a href="./" class="light desktop-only">See all latest booklists <i
+                                    class="icon-arrow-right"></i></a>#}
+                        <a href="{{ path('book_list', {'list':'families'}) }}">See all latest books <i
                                     class="icon-arrow-right"></i></a>
-                        <a href="./">See all latest books <i class="icon-arrow-right"></i></a>
                     </p>
                 </div>
             </header>
@@ -44,7 +45,8 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
-                                    <p class="link-btn" style="float: right;"><a href="./">More <i
+                                    <p class="link-btn" style="float: right;"><a
+                                                href="{{ path('book_list', {'list':'families'}) }}">More <i
                                                     class="icon-arrow-right"></i></a>
                                     </p>
                                 </div>
@@ -60,43 +62,11 @@
             <div class="double a">
                 <div>
                     <h2 class="s35">This months picks <a href="./" class="text-right">See all</a></h2>
-                    <ul class="list-box solid">
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                    </ul>
+                    {{ include('_families_video_block.html.twig') }}
                 </div>
                 <div>
                     <h2 class="s35">Growing Readers <a href="./" class="text-right">See all</a></h2>
-                    <ul class="list-box solid">
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                        <li>
-                            <figure><a href="./" class="video"><img src="http://placehold.it/575x325" alt="Placeholder"
-                                                                    width="575" height="325"></a></figure>
-                            <h2>Video Title</h2>
-                        </li>
-                    </ul>
+                    {{ include('_families_video_block.html.twig') }}
                 </div>
             </div>
         </article>
@@ -117,73 +87,17 @@
                     </ul>
                 </nav>
                 <div>
-                    <div>
-                        <ul class="list-aside slider">
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                            <li>
-                                <figure><img src="http://placehold.it/180x275" alt="Placeholder" width="180"
-                                             height="275"></figure>
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum,
-                                    rhoncus orci vel, fringilla est. Nam vel condimentum odio.</p>
-                                <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p>Content for "Children" tab.</p>
-                    </div>
-                    <div>
-                        <p>Content for "Teenagers" tab.</p>
-                    </div>
-                    <div>
-                        <p>Content for "Young Adult" tab.</p>
-                    </div>
-                    <div>
-                        <p>Content for "Debut" tab.</p>
-                    </div>
-                    <div>
-                        <p>Content for "Featured Authors" tab.</p>
-                    </div>
+                    {% for range_month in authors %}
+                        <div>
+                            <ul class="list-aside slider">
+                                {% for book in range_month %}
+                                    <li>
+                                        {% include('_book_teaser.html.twig') with {'book': book } %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </article>
@@ -219,62 +133,26 @@
         <article class="module-wide theme-coral">
             <h2 class="s35">This month’s highlights <i class="icon-sun"></i></h2>
             <ul class="list-entries">
-                <li class="theme-coral">
-                    <h3>Book Trailers</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335"></figure>
-                    <div>
-                        <h4>Title</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat interdum,
-                            rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat
-                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</p>
-                        <p class="link-btn">
-                            <a href="./">More <i class="icon-arrow-right"></i></a>
-                            <a href="./">Make &amp; Send Your Own <i class="icon-arrow-right"></i></a>
-                        </p>
-                    </div>
-                </li>
-                <li class="theme-carrot">
-                    <h3>Podcasts</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335"></figure>
-                    <div>
-                        <h4>Title</h4>
-                        <p class="link-btn">
-                            <a href="./">More <i class="icon-arrow-right"></i></a>
-                            <a href="./">Make &amp; Send Your Own <i class="icon-arrow-right"></i></a>
-                        </p>
-                    </div>
-                </li>
-                <li class="theme-lime">
-                    <h3>Audio Books</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335"></figure>
-                    <div>
-                        <h4>Title</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat interdum,
-                            rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat
-                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</p>
-                        <p class="link-btn">
-                            <a href="./">More <i class="icon-arrow-right"></i></a>
-                            <a href="./">Make &amp; Send Your Own <i class="icon-arrow-right"></i></a>
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <h3>Vlogs &amp; Videos</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335"></figure>
-                    <div>
-                        <h4>Title</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat interdum,
-                            rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat
-                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</p>
-                        <p class="link-btn">
-                            <a href="./">More <i class="icon-arrow-right"></i></a>
-                            <a href="./">Make &amp; Send Your Own <i class="icon-arrow-right"></i></a>
-                        </p>
-                    </div>
-                </li>
+
+                {% for key, type in project_types %}
+                    {% if latest_projects[key].id is defined %}
+                        <li class="{{ themes[key] }}">
+                            <h3>{{ type }}</h3>
+                            <figure><img src="/project-assets/{{ latest_projects[key].image |default('') }}"
+                                         alt="Placeholder"
+                                         width="235"
+                                         height="335"></figure>
+                            <div>
+                                <h4>{{ latest_projects[key].title |default('') }}</h4>
+                                <p>{{ latest_projects[key].intro_text |default('') }}</p>
+                                <p class="link-btn">
+                                    <a href="./">More <i class="icon-arrow-right"></i></a>
+                                    <a href="./">Make &amp; Send Your Own <i class="icon-arrow-right"></i></a>
+                                </p>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </article>
         <article class="module-wide theme-coral light">
@@ -283,113 +161,15 @@
                     <header class="heading-title">
                         <h1 class="overlay-b">Bookshop <i class="icon-books"></i></h1>
                     </header>
-                    <div class="module-box b">
-                        <form action="./" method="post" class="form-search">
-                            <p>
-                                <label for="fsa">Search</label>
-                                <input type="search" id="fsa" name="fsa" placeholder="Search" required>
-                                <button type="submit" class="hidden">Submit</button>
-                            </p>
-                            <ul class="list-filter">
-                                <li>Filter by:</li>
-                                <li class="theme-navy"><a href="./">Young Adult</a></li>
-                                <li class="theme-azure"><a href="./">Schools &amp; Libraries</a></li>
-                                <li class="theme-carrot"><a href="./">Children</a></li>
-                                <li class="theme-coral"><a href="./">Families</a></li>
-                                <li class="theme-lime"><a href="./">Teens</a></li>
-                            </ul>
-                        </form>
-                        <section>
-                            <h2 class="strong s30 ms20">Most popular</h2>
-                            <ul class="list-slider" data-count="3">
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/155x240" alt="Placeholder" width="155"
-                                                      height="240"> Title <span>Author</span></a></li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h2 class="s20">Action &amp; Adventure</h2>
-                            <ul class="list-slider">
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                                <li><a href="./"><img src="http://placehold.it/130x200" alt="Placeholder" width="130"
-                                                      height="200"> Title <span>Author</span></a></li>
-                            </ul>
-                        </section>
-                    </div>
+                    {{ include('_bookshop_homepage.html.twig') }}
                 </div>
                 <aside>
                     <h2 class="s35 overlay-b">News <i class="icon-news"></i></h2>
                     <ul class="list-related">
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
+                        {{ include('_list-related.html.twig') }}
                     </ul>
                     <h2 class="s35 overlay-b">Twitter <i class="icon-twitter"></i></h2>
-                    <ul class="list-related">
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
-                        <li><a href="./"><span class="img"><img src="http://placehold.it/60x85" alt="Placeholder"
-                                                                width="60" height="85"></span> Headline Title dolor sit
-                                amet, consectetur Aenean in erat interdum Headline Title dolor sit amet, consectetur
-                                Aenean in erat interdum</a></li>
-                    </ul>
+                    {{ include('_twitter.html.twig') }}
                 </aside>
             </div>
         </article>

@@ -11,7 +11,7 @@
                     <h1>{{ booklist | default('Booklist') }}</h1>
                 </header>
                 <ul class="list-results a">
-                    {% for book in books %}
+                    {% for book in books_details %}
                         {{ include('_booklist_entry.html.twig', {'book': book}) }}
                     {% endfor %}
                 </ul>

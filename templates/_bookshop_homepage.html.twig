@@ -1,0 +1,41 @@
+<div class="module-box b">
+    <form action="./" method="post" class="form-search">
+        {# <p>
+            <label for="fsa">Search</label>
+            <input type="search" id="fsa" name="fsa" placeholder="Search" required>
+            <button type="submit" class="hidden">Submit</button>
+        </p> #}
+        <ul class="list-filter">
+            <li>Filter by:</li>
+            <li class="theme-navy"><a href="./">Young Adult</a></li>
+            <li class="theme-azure"><a href="./">Schools &amp; Libraries</a></li>
+            <li class="theme-carrot"><a href="./">Children</a></li>
+            <li class="theme-coral"><a href="./">Families</a></li>
+            <li class="theme-lime"><a href="./">Teens</a></li>
+        </ul>
+    </form>
+    <section>
+        <h2 class="strong s30 ms20">Most popular</h2>
+        <ul class="list-slider" data-count="3" style="align-items: baseline;">
+            {% for popular_book in popular_books %}
+                {% include('_bookshop_large.html.twig') with {'popular_book': popular_book} %}
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2 class="s20">{{ bookshop_1[0].name | default('') }}</h2>
+        <ul class="list-slider" style="align-items: baseline;">
+            {% for book in bookshop_1 %}
+                {% include('_bookshop_small.html.twig') with {'book': book} %}
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2 class="s20">{{ bookshop_2[0].name | default('') }}</h2>
+        <ul class="list-slider" style="align-items: baseline;">
+            {% for book in bookshop_2 %}
+                {% include('_bookshop_small.html.twig') with {'book': book} %}
+            {% endfor %}
+        </ul>
+    </section>
+</div>
