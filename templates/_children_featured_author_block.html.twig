@@ -1,0 +1,15 @@
+<li>
+    <figure><img src="https://readingzone.com/authimages/{{ a.authorid | default() }}.jpg"
+                 alt="{{ a.text | default() }}"
+                 width="160"
+                 height="245">
+    </figure>
+    <p>{{ a.text | default() }}</p>
+    <p class="link-btn"><a
+                href="{{ path('author_profile',{
+                    'authorid': a.authorid | slice(0,7) | default(),
+                    'auth_name': a.text}) }}">More
+            <i
+                    class="icon-arrow-right"></i></a>
+    </p>
+</li>

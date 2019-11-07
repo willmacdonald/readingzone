@@ -62,11 +62,12 @@
             <div class="double a">
                 <div>
                     <h2 class="s35">This months picks <a href="./" class="text-right">See all</a></h2>
-                    {{ include('_families_video_block.html.twig') }}
+
+                    {{ include('_families_video_block.html.twig', {'video': this_months_pick}) }}
                 </div>
                 <div>
                     <h2 class="s35">Growing Readers <a href="./" class="text-right">See all</a></h2>
-                    {{ include('_families_video_block.html.twig') }}
+                    {{ include('_families_video_block.html.twig', {'video': growing_readers}) }}
                 </div>
             </div>
         </article>
@@ -106,27 +107,13 @@
                 <div>
                     <h2 class="s35 overlay-b">Competitions <i class="icon-podium"></i> <a href="./" class="text-right">See
                             all</a></h2>
-                    <div class="module-entry a">
-                        <figure><img src="http://placehold.it/575x385" alt="Placeholder" width="575" height="385">
-                        </figure>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum odio.</p>
-                        <p class="link-btn"><a class="a" href="./">More <i class="icon-arrow-right"></i></a></p>
-                    </div>
+                    {{ include('_fz_featured_comp.html.twig', {'project': featured_competition }) }}
                 </div>
                 <div>
                     <h2 class="s35 overlay-b">Creative Projects <i class="icon-pencils"></i> <a href="./"
                                                                                                 class="text-right">See
                             all</a></h2>
-                    <div class="module-entry a">
-                        <figure><img src="http://placehold.it/575x385" alt="Placeholder" width="575" height="385">
-                        </figure>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum odio.</p>
-                        <p class="link-btn"><a class="a" href="./">More <i class="icon-arrow-right"></i></a></p>
-                    </div>
+                    {{ include('_fz_featured_comp.html.twig', {'project': featured_project }) }}
                 </div>
             </div>
         </article>

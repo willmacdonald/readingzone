@@ -13,39 +13,21 @@
             <div class="triple">
                 <div>
                     <h2 class="s35">Author of the Month <a href="./" class="text-right">See all</a></h2>
-                    <article class="module-entry">
-                        <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        </figure>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
-                        <figure class="background"><img src="images/background-g.png" alt="Placeholder" width="105"
-                                                        height="45"></figure>
-                    </article>
+                    {{ include('_childrens_authors_block.html.twig', {  'id': author_month_id,
+                        'title': author_month_title,
+                        'text': author_month_text }) }}
                 </div>
                 <div>
                     <h2 class="s35">Writers Shed <a href="./" class="text-right">See all</a></h2>
-                    <article class="module-entry">
-                        <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        </figure>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
-                        <figure class="background"><img src="images/background-h.png" alt="Placeholder" width="185"
-                                                        height="57"></figure>
-                    </article>
+                    {{ include('_childrens_authors_block.html.twig', {  'id': writers_shed_id,
+                        'title': writers_shed_title,
+                        'text': writers_shed_text }) }}
                 </div>
                 <div>
                     <h2 class="s35">A Career in ..... <a href="./" class="text-right">See all</a></h2>
-                    <article class="module-entry">
-                        <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        </figure>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
-                        <figure class="background"><img src="images/background-i.png" alt="Placeholder" width="60"
-                                                        height="66"></figure>
-                    </article>
+                    {{ include('_childrens_authors_block.html.twig', {  'id': career_id,
+                        'title': career_title,
+                        'text': career_text }) }}
                 </div>
             </div>
             <figure class="offset-left top"><img src="images/background-b.png" alt="Placeholder" width="218"
@@ -125,48 +107,9 @@
                                         class="icon-arrow-right"></i></a></p>
                     </header>
                     <ul class="list-aside box slider" data-count="2">
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
+                        {% for author in featured_authors %}
+                            {{ include('_children_featured_author_block.html.twig', {'a': author }) }}
+                        {% endfor %}
                     </ul>
                 </article>
                 <aside>

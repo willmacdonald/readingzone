@@ -45,6 +45,23 @@ class FamiliesController extends AbstractController
         }
 
         /**
+         * This months picks & growing readers
+         */
+
+        $this_months_pick = $connection->fetchAll("SELECT * 
+                FROM families_this_months_picks 
+                WHERE type = 'picks'
+                ORDER BY mark
+                LIMIT 1");
+
+        $growing_readers = $connection->fetchAll("SELECT * 
+                FROM families_this_months_picks 
+                WHERE type = 'growing'
+                ORDER BY mark
+                LIMIT 1");
+
+
+        /**
          * Authors of the month
          */
         $featured_authors = $connection->fetchAll('SELECT 
@@ -72,6 +89,31 @@ class FamiliesController extends AbstractController
                 }
             }
         }
+
+
+        /**
+         * Competitions and Creative Projects Block
+         */
+
+        $sql = "SELECT *
+                FROM projects
+                WHERE 
+                    featured_families = 1
+                     AND type = 'competition'
+                ORDER BY mark
+                LIMIT 1";
+
+        $featured_competition = $connection->fetchAll($sql);
+
+        $sql = "SELECT *
+                FROM projects
+                WHERE 
+                    featured_families = 1
+                     AND type = 'project'
+                ORDER BY mark
+                LIMIT 1";
+
+        $featured_project = $connection->fetchAll($sql);
 
 
         /**
@@ -130,29 +172,29 @@ class FamiliesController extends AbstractController
 
         $sql = "SELECT TI, FN, bookshop.isbn  as isbn, tag
                     FROM book_details, bookshop
-                    WHERE bookshop.isbn = book_details.ISBN13
-                    AND bookshop.popular = 1
+                    WHERE bookshop . isbn = book_details . ISBN13
+    AND bookshop . popular = 1
                     ORDER BY mark";
 
         $stmt = $connection->prepare($sql);
         $stmt->execute();
         $popular_books = $stmt->fetchAll();
 
-        $sql = "SELECT book_details.TI, book_details.FN, bookshop.isbn as isbn, bookshop_categories.name, tag
+        $sql = "SELECT book_details . TI, book_details .FN, bookshop . isbn as isbn, bookshop_categories . name, tag
                 FROM book_details, bookshop, bookshop_categories
-                WHERE bookshop_categories.live = 1
-                AND bookshop_categories.id = bookshop.category
-                AND bookshop.isbn = book_details.ISBN13";
+                WHERE bookshop_categories . live = 1
+    AND bookshop_categories . id = bookshop . category
+    AND bookshop . isbn = book_details . ISBN13";
 
         $stmt = $connection->prepare($sql);
         $stmt->execute();
         $bookshop_1 = $stmt->fetchAll();
 
-        $sql = "SELECT book_details.TI, book_details.FN, bookshop.isbn as isbn, bookshop_categories.name, tag
+        $sql = "SELECT book_details . TI, book_details .FN, bookshop . isbn as isbn, bookshop_categories . name, tag
                 FROM book_details, bookshop, bookshop_categories
-                WHERE bookshop_categories.live = 2
-                AND bookshop_categories.id = bookshop.category
-                AND bookshop.isbn = book_details.ISBN13";
+                WHERE bookshop_categories . live = 2
+    AND bookshop_categories . id = bookshop . category
+    AND bookshop . isbn = book_details . ISBN13";
 
         $stmt = $connection->prepare($sql);
         $stmt->execute();
@@ -171,6 +213,10 @@ class FamiliesController extends AbstractController
             'popular_books' => $popular_books,
             'bookshop_1' => $bookshop_1,
             'bookshop_2' => $bookshop_2,
+            'this_months_pick' => $this_months_pick[0],
+            'growing_readers' => $growing_readers[0],
+            'featured_competition' => $featured_competition[0],
+            'featured_project' => $featured_project[0],
         ]);
     }
 }

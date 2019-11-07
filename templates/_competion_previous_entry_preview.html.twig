@@ -1,0 +1,5 @@
+<figure>
+    <img src="{{ e.image | default() }}" alt="{{ e.title | default() }}" width="235" height="335">
+    <figcaption>{{ e.title | default() }}</figcaption>
+</figure>
+<p>{{ e.intro_text | default() }}<a href="{{ path('competition', {'id': e.id }) }}">More...</a></p>

@@ -170,7 +170,7 @@
                 {% if competition.id is defined %}
                     <div>
                         <h2 class="s35 overlay-b">Competitions<i class="icon-podium"></i> <a
-                                    href="{{ path('competition', {'comp_id': competition.id}) }}" class="text-right">See
+                                    href="{{ path('competition', {'id': competition.id}) }}" class="text-right">See
                                 all</a></h2>
                         <div class="module-entry a">
                             <figure><img src="/project-assets/{{ competition.image | default() }}"
@@ -181,7 +181,7 @@
                             <h3>{{ competition.title | default() }}</h3>
                             <p>{{ competition.intro_text | default() }}</p>
                             <p class="link-btn"><a class="a"
-                                                   href="{{ path('competition', {'comp_id': competition.id}) }}">More
+                                                   href="{{ path('competition', {'id': competition.id}) }}">More
                                     <i class="icon-arrow-right"></i></a></p>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                 {% if project.id is defined %}
                     <div>
                         <h2 class="s35 overlay-b">Creative Projects <i class="icon-pencils"></i> <a
-                                    href="{{ path('competition', {'comp_id': project.id}) }}"
+                                    href="{{ path('competition', {'id': project.id}) }}"
                                     class="text-right">See
                                 all</a></h2>
                         <div class="module-entry a">
@@ -199,7 +199,7 @@
                             <h3>{{ project.title }}</h3>
                             <p>{{ project.intro_text }}</p>
                             <p class="link-btn"><a class="a"
-                                                   href="{{ path('competition', {'comp_id': competition.id}) }}">More
+                                                   href="{{ path('competition', {'id': competition.id}) }}">More
                                     <i class="icon-arrow-right"></i></a></p>
                         </div>
                     </div>

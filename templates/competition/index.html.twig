@@ -9,49 +9,28 @@
             <h1 class="s35">Latest Competition <i class="icon-podium"></i></h1>
             <ul class="list-entries">
                 <li class="featured">
-                    <figure><img src="http://placehold.it/645x460" alt="Placeholder" width="645" height="460"></figure>
+                    <figure><img src="{{ competition.image | default() }}" alt="{{ competition.title | default() }}"
+                                 width="645" height="460"></figure>
                     <div>
-                        <h3>Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                            orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat interdum,
-                            rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing elit. Aenean in erat
-                            interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</p>
+                        <h3>{{ competition.title | default() }}</h3>
+                        <p>{{ competition.intro_text | default() }}</p>
                     </div>
                 </li>
                 <li class="theme-lime no-img">
                     <h3>Competition guidelines</h3>
                     <div>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing
-                                elit. Aenean in erat interdum, rhoncus orci vel, fringilla est.
-                            </li>
-                            <li>Nam vel condimentum adipiscing elit. Aenean in erat interdum, rhoncus orci vel,
-                                fringilla est. Nam vel condimentum
-                            </li>
-                            <li>Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</li>
-                            <li>Nam vel condimentum adipiscing elit. Aenean in erat interdum, rhoncus orci vel,
-                                fringilla est. Nam vel condimentum
-                            </li>
-                        </ul>
-                        <p class="link-btn text-right"><a href="./" class="a">PDF download <i
+                        {{ competition.guidelines | default() }}
+                        <p class="link-btn text-right"><a href="{{ competition.guidelines_pdf }}" class="a">PDF download
+                                <i
                                         class="icon-arrow-down"></i></a></p>
                     </div>
                 </li>
                 <li class="no-img">
                     <h3>How to Send Your Entry</h3>
                     <div>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum adipiscing
-                                elit. Aenean in erat interdum, rhoncus orci vel, fringilla est.
-                            </li>
-                            <li>Nam vel condimentum adipiscing elit. Aenean in erat interdum, rhoncus orci vel,
-                                fringilla est. Nam vel condimentum
-                            </li>
-                            <li>Aenean in erat interdum, rhoncus orci vel, fringilla est. Nam vel condimentum</li>
-                        </ul>
-                        <p class="link-btn text-right"><a href="./" class="a">Entry form <i
+                        {{ competition.how_to_send | default() }}
+                        <p class="link-btn text-right"><a href="{{ competition.how_to_send_pdf | default() }}"
+                                                          class="a">Entry form <i
                                         class="icon-arrow-right"></i></a></p>
                     </div>
                 </li>
@@ -60,107 +39,62 @@
         <article class="module-wide theme-azure light">
             <h2 class="s35 overlay-navy">Resources</h2>
             <ul class="list-box theme-navy">
-                <li>
-                    <figure><a href="./" class="video"><img src="http://placehold.it/355x200" alt="Placeholder"
-                                                            width="355" height="200"></a></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                        orci</p>
-                </li>
-                <li>
-                    <figure><a href="./" class="video"><img src="http://placehold.it/355x200" alt="Placeholder"
-                                                            width="355" height="200"></a></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                        orci</p>
-                </li>
-                <li>
-                    <figure><a href="./" class="video"><img src="http://placehold.it/355x200" alt="Placeholder"
-                                                            width="355" height="200"></a></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                        orci</p>
-                </li>
-                <li>
-                    <figure><img src="http://placehold.it/355x200" alt="Placeholder" width="355" height="200"></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci <a
-                                href="./">Download</a></p>
-                </li>
-                <li>
-                    <figure><img src="http://placehold.it/355x200" alt="Placeholder" width="355" height="200"></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci <a
-                                href="./">Download</a></p>
-                </li>
-                <li>
-                    <figure><img src="http://placehold.it/355x200" alt="Placeholder" width="355" height="200"></figure>
-                    <h2>Title</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci <a
-                                href="./">Download</a></p>
-                </li>
+                {% if competition.video1_title is not empty %}
+                    {{ include('_competition_rescources.html.twig', {'v': competition.video1_id, 't': competition.video1_title, 'x': competition.video1_text}) }}
+                {% endif %}
+                {% if competition.video2_title is not empty %}
+                    {{ include('_competition_rescources.html.twig', {'v': competition.video2_id, 't': competition.video2_title, 'x': competition.video2_text}) }}
+                {% endif %}
+                {% if competition.video3_title is not empty %}
+                    {{ include('_competition_rescources.html.twig', {'v': competition.video3_id, 't': competition.video3_title, 'x': competition.video3_text}) }}
+                {% endif %}
+                {% if competition.pdf1_title is not empty %}
+                    {{ include('_competition_resource_doc.html.twig', {'i': competition.pdf1_img, 't': competition.pdf1_title, 'x': competition.pdf1_text, 'd': competition.pdf1_link}) }}
+                {% endif %}
+                {% if competition.pdf2_title is not empty %}
+                    {{ include('_competition_resource_doc.html.twig', {'i': competition.pdf2_img, 't': competition.pdf2_title, 'x': competition.pdf2_text, 'd': competition.pdf2_link}) }}
+                {% endif %}
+                {% if competition.pdf3_title is not empty %}
+                    {{ include('_competition_resource_doc.html.twig', {'i': competition.pdf3_img, 't': competition.pdf3_title, 'x': competition.pdf3_text, 'd': competition.pdf3_link}) }}
+                {% endif %}
             </ul>
         </article>
-        <p class="link-btn cta theme-navy">
+        {#<p class="link-btn cta theme-navy">
             <span>Subscribe to ReadingZone Plus for more digital ‘book plus’ activities</span> <a href="./">Subscribe <i
                         class="icon-arrow-right"></i></a> <span class="offset-wide"><img src="images/background-j.jpg"
                                                                                          alt="Placeholder" width="2000"
-                                                                                         height="2000"></span></p>
+                                                                                         height="2000"></span></p>#}
         <article class="module-wide theme-lime">
-            <h2 class="s35">Get Creative <a href="./" class="text-right">See all</a></h2>
+            <h2 class="s35">Get Creative <a href="{{ path('list_projects') }}" class="text-right">See all</a></h2>
             <ul class="list-box">
                 <li>
                     <h3>Primary schools termly competition</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': gc_primary}) }}
                 </li>
                 <li>
                     <h3>Secondary schools termly competition</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': gc_secondary}) }}
                 </li>
                 <li>
-                    <h3>Make &amp; Send an Audio Book</h3>
-                    <figure><img src="http://placehold.it/350x335" alt="Placeholder" width="350" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    <h3>Make &amp; Send an {{ gc_3rd_col_title }}</h3>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': gc_3rd_col}) }}
                 </li>
             </ul>
         </article>
         <article class="module-wide theme-coral">
-            <h2 class="s35">Previous Entries <a href="./" class="text-right">See all</a></h2>
+            <h2 class="s35">Previous Entries <a href="{{ path('list_projects') }}" class="text-right">See all</a></h2>
             <ul class="list-box">
                 <li>
                     <h3>Primary schools termly competition</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': pe_primary}) }}
                 </li>
                 <li>
                     <h3>Secondary schools termly competition</h3>
-                    <figure><img src="http://placehold.it/235x335" alt="Placeholder" width="235" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': pe_primary}) }}
                 </li>
                 <li>
-                    <h3>Make &amp; Send an Audio Book</h3>
-                    <figure><img src="http://placehold.it/350x335" alt="Placeholder" width="350" height="335">
-                        <figcaption>Title</figcaption>
-                    </figure>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus orci
-                        vel, fringilla est. Nam vel condimentum odio. <a href="./">More...</a></p>
+                    <h3>Make &amp; Send an {{ pe_3rd_col_title }}</h3>
+                    {{ include('_competion_previous_entry_preview.html.twig', {'e': pe_3rd_col}) }}
                 </li>
             </ul>
         </article>

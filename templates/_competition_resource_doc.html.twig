@@ -1,0 +1,9 @@
+<li>
+    <figure><img src="{{ i | default }}" alt="{{ t | default() }}" width="355" height="200"></figure>
+    <h2>{{ t | default() }}</h2>
+    <p>{{ x | default }}
+        {% if d is not empty %}
+            <a href="{{ d | default }}">Download</a>
+        {% endif %}
+    </p>
+</li>
