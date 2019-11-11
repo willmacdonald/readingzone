@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+{{ include('_head.html.twig') }}
+<body>
+<div id="root">
+    <header id="top">
+        {{ include('_header.html.twig') }}
+    </header>
+    <main id="content">
+        <div class="cols-a">
+            <article>
+                <header class="heading-title">
+                    <h1>{{ author.auth_name }}</h1>
+                    {% if writer is defined %}
+                        <p>posted by <a href="./">Joe Bloggs</a> on 10 May 2019</p>
+                    {% endif %}
+                    {{ include('_share_this.html.twig') }}
+                </header>
+                <div class="module-box">
+                    <figure class="align-right">
+                        {% if author.authorid is defined %}
+                            <img src="https://readingzone.com/authimages/{{ author.authorid | default() }}.jpg"
+                                 alt="{{ author.auth_name }}"
+                                 width="210" height="315">
+                        {% endif %}
+
+                        {% if recent_book is defined %}
+                            <img src="//readingzone.com/thumb.php?cover={{ recent_book }}" alt="{{ recent_book }}"
+                                 width="210" height="315">
+                        {% endif %}
+                    </figure>
+                    <h2 class="m25">Author Biog</h2>
+                    <p>{{ author.biog | nl2br }}</p>
+                    <p>Read <a href="./">this link</a> on ReadingZone.</p>
+                    <p class="m45">Nam vitae massa id ipsum cursus luctus ac a tortor. Morbi nec</p>
+                    {% if author.video_id is defined %}
+                        <h2>Video title</h2>
+                        <figure class="text-center">
+                            {{ include('_vimeo_video_w_h.html.twig', {'video': author.video_id, 'w': 720, 'h': 405}) }}
+                        </figure>
+                    {% endif %}
+                    <h3>Q&amp;A</h3>
+                    {{ interview | raw }}
+                    <h3>Other titles</h3>
+                    <ul class="list-gallery">
+                        {% for isbn in recent_books %}
+                            <li>
+                                {{ include('_book_cover.html.twig', {'isbn': isbn }) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </article>
+            <aside>
+                {% if related_articles is not empty %}
+                    <h2 class="s35">Related Articles</h2>
+                    <ul class="list-related">
+                        {{ include('_list-related.html.twig', {'recent_news_summary': related_articles}) }}
+                    </ul>
+                {% else %}
+                    <h2 class="s35">News</h2>
+                    <ul class="list-related">
+                        {{ include('_list-related.html.twig', {'item': recent_news_summary}) }}
+                    </ul>
+                {% endif %}
+            </aside>
+        </div>
+    </main>
+    {{ include('_footer.html.twig') }}
+</div>
+{{ include('_footer-scripts.html.twig') }}
+</body>
+</html>

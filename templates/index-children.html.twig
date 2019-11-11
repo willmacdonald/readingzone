@@ -42,48 +42,11 @@
                         <h2>Latest Books &amp; extracts <i class="icon-books"></i></h2>
                     </header>
                     <ul class="list-aside box slider" data-count="2" data-background="images/background-e.png">
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
-                        <li>
-                            <figure><img src="http://placehold.it/160x245" alt="Placeholder" width="160" height="245">
-                            </figure>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in erat interdum, rhoncus
-                                orci vel, fringilla est. Nam vel condimentum odio.</p>
-                            <p class="link-btn"><a href="./">More <i class="icon-arrow-right"></i></a></p>
-                        </li>
+                        {% for latest_bookextract in latest_bookextracts %}
+                            <li>
+                                {{ include('_book_teaser.html.twig',{'book': latest_bookextract } ) }}
+                            </li>
+                        {% endfor %}
                     </ul>
                 </article>
                 <aside>

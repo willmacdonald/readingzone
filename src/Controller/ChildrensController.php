@@ -29,6 +29,16 @@ class ChildrensController extends AbstractController
          */
         $latest_books_extracts = $connection->fetchAll("SELECT isbn FROM childrens_homepage_bookextracts ORDER BY mark LIMIT 20");
 
+        $isbn_list = "";
+        foreach ($latest_books_extracts as $book) {
+            $isbn_list .= "'" . $book['isbn'] . "', ";
+        }
+
+        $isbn_list = rtrim($isbn_list, ', ');
+
+        $latest_books_extract_details = $connection->fetchAll("SELECT book_details.ISBN13 as isbn, TI as title, DF2 as summary FROM book_details WHERE ISBN13 in ($isbn_list)");
+
+
         /**
          * featured authors
          */
@@ -40,8 +50,6 @@ class ChildrensController extends AbstractController
          * Your reviews
          */
 
-        var_dump($featured_authors);
-
         return $this->render('index-children.html.twig', [
             'author_month_id' => $top_section[0]['author_month'],
             'author_month_title' => $top_section[0]['author_month_title'],
@@ -52,7 +60,7 @@ class ChildrensController extends AbstractController
             'career_id' => $top_section[0]['career'],
             'career_title' => $top_section[0]['career_title'],
             'career_text' => $top_section[0]['career_text'],
-            'latest_bookextracts' => $latest_books_extracts,
+            'latest_bookextracts' => $latest_books_extract_details,
             'featured_authors' => $featured_authors,
         ]);
     }

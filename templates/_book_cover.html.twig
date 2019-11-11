@@ -1,0 +1,5 @@
+<a href="{{ path('book_details', {'isbn': isbn }) }}">
+    <img src="https://readingzone.com/thumb.php?cover={{ isbn | default }}"
+         alt="{{ isbn | default }}"
+         height="275"
+         width="180"></a>

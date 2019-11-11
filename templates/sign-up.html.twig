@@ -11,11 +11,7 @@
             <article>
                 <header class="heading-title">
                     <h1>About Us</h1>
-                    <ul class="list-social">
-                        <li>Share this</li>
-                        <li><a href="./"><i class="icon-facebook"></i> <span>Facebook</span></a></li>
-                        <li><a href="./"><i class="icon-twitter"></i> <span>Twitter</span></a></li>
-                    </ul>
+                    {{ include('_share_this.html.twig') }}
                 </header>
                 <div class="module-box">
                     {{ data.main_text }}
